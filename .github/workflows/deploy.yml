@@ -1,0 +1,63 @@
+name: 多平台部署
+
+on:
+  push:
+    branches:
+      - master  # 或者你的主分支名称，如果是master请改为master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # 如果主题是submodule需要这个
+          fetch-depth: 0
+      
+      - name: 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      
+      - name: 安装依赖
+        run: npm ci
+      
+      - name: 构建 Hexo
+        run: |
+          npm run clean
+          npm run build
+      
+      # 部署到 GitHub Pages
+      - name: 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+      
+      # 部署到 Vercel（通过 Vercel 自动检测 gh-pages 分支或主分支）
+      # Vercel 会自动监听仓库，无需额外配置
+      
+      # 部署到腾讯云 EdgePage（通过腾讯云自动检测 gh-pages 分支）
+      # EdgePage 会自动监听仓库，无需额外配置
+      
+      # 部署到私人服务器
+      - name: 部署到私人服务器
+        uses: easingthemes/ssh-deploy@v5.0.3
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          REMOTE_PORT: ${{ secrets.SERVER_PORT }}
+          SOURCE: "public/"
+          TARGET: "/opt/1panel/www/sites/blog.nfasystem.top/index"
+          ARGS: "-avz --delete"
+          SCRIPT_BEFORE: |
+            whoami
+            ls -al
+          SCRIPT_AFTER: |
+            echo "部署完成"
+            ls -al /opt/1panel/www/sites/blog.nfasystem.top/index
