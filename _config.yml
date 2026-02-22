@@ -148,3 +148,18 @@ markdown:
   field: post
   content: true
   template:
+
+
+encrypt:
+  enable: true
+
+  abstract: "这里的内容加密了，需要密码才能解锁晨曦的小秘密哦。"
+  message: "请输入密码查看本文。"
+
+  tags:
+    - [name: "小说", password: "NFAchenxi001."]
+  # 错误消息设置
+  wrong_pass_message: "密码错误，不要偷看哦。"
+  wrong_hash_message: "内容认证失败，但仍可尝试查看。"
+  # 是否禁用日志记录
+  silent: false
