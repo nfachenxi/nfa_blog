@@ -50,8 +50,8 @@ nav:
     关于:
       关于我: /about/ || fas fa-user-circle 
       音乐馆: /music/ || fas fa-music
-    留言板: /message/ || fas fa-desktop
-    画廊: /gallery/ || fas fa-camera-retro
+    留言板: /message/
+    画廊: /gallery/
     # 首页: / # name: link
     # 文库: # name
     #   全部文章: /archives/ || fas fa-folder-closed # item name: link || icon
@@ -145,20 +145,20 @@ carousel: true
 # Aside
 # 侧边栏
 aside:
-  # Values: about (info card), newestPost (latest article), allInfo (website information), newest_comment (latest comment)
-  # 值: about(信息卡), newestPost(最新文章), allInfo(网站信息), newest_comment(最新评论)
+  # Values: about (info card), newestPost (latest article), allInfo (website information), newest_comment (latest comment), route_switch (route switch)
+  # 值: about(信息卡), newestPost(最新文章), allInfo(网站信息), newest_comment(最新评论), route_switch(线路切换)
 
   # Sticky: Fixed position / noSticky: Not fixed position
   # Sticky: 固定位置 / noSticky: 不固定位置
   home: # on the homepage
     noSticky: "about"
-    Sticky: "allInfo"
+    Sticky: "route_switch,allInfo"
   post: # on the article page
     noSticky: "about"
-    Sticky: "newestPost"
+    Sticky: "newestPost,route_switch"
   page: # on the page
     noSticky: "about"
-    Sticky: "newestPost,allInfo"
+    Sticky: "newestPost,route_switch,allInfo"
   # 菜单栏位置(0: 左 1: 右)
   position: 1 # Sidebar positioning(0: left 1: right)
 
@@ -1063,4 +1063,20 @@ CDN:
     # valine:
     # waline_css:
     # waline_js:
+# --------------------------- end ---------------------------
+
+# --------------------------- start ---------------------------
+# Route Switch
+# 线路切换
+route_switch:
+  enable: true
+  routes:
+    - name: Vercel 线路
+      url: https://vercel.example.com
+    - name: GitHub Pages
+      url: https://github.example.com
+    - name: 腾讯云 EdgePage
+      url: https://tencent.example.com
+    - name: 私人服务器
+      url: https://blog.nfasystem.top
 # --------------------------- end ---------------------------
