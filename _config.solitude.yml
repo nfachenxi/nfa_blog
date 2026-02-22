@@ -1072,11 +1072,11 @@ route_switch:
   enable: true
   routes:
     - name: Vercel 线路
-      url: https://vercel.example.com
+      url: https://cx.nfasystem.top
     - name: GitHub Pages
-      url: https://github.example.com
+      url: https://nfachenxi.nfasystem.top
     - name: 腾讯云 EdgePage
-      url: https://tencent.example.com
+      url: https://chenxi.nfasystem.top
     - name: 私人服务器
       url: https://blog.nfasystem.top
 # --------------------------- end ---------------------------
