@@ -20,7 +20,7 @@
 site:
   name:
     class: text # text / i_class / img
-    custom: 第四领域小站 # Solitude / fas fa-ghost / /img/pwa/favicon.ico
+    custom: 晨曦の小站 # Solitude / fas fa-ghost / /img/pwa/favicon.ico
   icon: /img/nfa_icon.jpg # Site icon / 网站图标
 # --------------------------- end ---------------------------
 
@@ -47,9 +47,11 @@ nav:
     友链:
       # 朋友圈: /moments/ || fas fa-wifi
       友情链接: /links/ || fas fa-user-group
-    关于: 
+    关于:
       关于我: /about/ || fas fa-user-circle 
       音乐馆: /music/ || fas fa-music
+    留言板: /message/ || fas fa-desktop
+    画廊: /gallery/ || fas fa-camera-retro
     # 首页: / # name: link
     # 文库: # name
     #   全部文章: /archives/ || fas fa-folder-closed # item name: link || icon
@@ -85,7 +87,7 @@ nav:
 # 首页顶部
 hometop:
   enable: true
-  banner:
+  banner:  
     title: 分享技术<br >与科技生活 # 大字
     desc:
       - 一个热爱生活的人 # 小字
@@ -170,7 +172,7 @@ aside:
     # 介绍 / Introduction
     description: 只有迎风，风筝才能飞得更高。
     # 内容 / Content
-    content: 这是第四领域博客，专注于分享，由第四领域主管——晨曦负责与维护。
+    content: 这是晨曦の博客，专注于分享，由第四领域——晨曦负责与维护。
     state:
       morning: ✨ 早上好，新的一天开始了
       noon: 🍲 午餐时间
@@ -225,7 +227,7 @@ aside:
     uv: true
     # Last update date
     # 最后更新日期
-    updatetime: false
+    updatetime: true
     # Website creation time
     # 网站创建时间
     runtimeenable: true
@@ -312,7 +314,7 @@ post:
     date: true
     # Update date
     # 更新日期
-    updated: false
+    updated: true
     # Location
     # 位置
     locate: false
@@ -394,7 +396,7 @@ theme_color:
 display_mode:
   # auto: automatic switching(Recognize the current theme mode of the device) / dark: dark mode / light: light mode
   # auto: 自动切换（识别设备当前主题模式） / dark: 深色模式 / light: 浅色模式
-  type: dark
+  type: auto
   # After opening, the dark mode will display the starry sky background
   # 开启后深色模式会显示星空背景
   universe: true
@@ -438,7 +440,7 @@ lure:
 # Article expiration
 # 文章过期
 expire:
-  enable: true
+  enable: false
   time: 100 # days
   position: top # top / bottom
   text_prev: "这篇文章发布于 "
