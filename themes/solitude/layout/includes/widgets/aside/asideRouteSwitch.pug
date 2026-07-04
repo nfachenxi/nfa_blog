@@ -1,0 +1,21 @@
+//- ===========================================
+//- 线路切换组件
+//- ===========================================
+
+- var routeConfig = theme.route_switch || {}
+if routeConfig.enable
+  .card-widget.card-route-switch
+    .card-content
+      .item-headline
+        i.fas.fa-route
+        span= _p('aside.route_switch')
+      .route-list#route-list
+        each route in routeConfig.routes
+          .route-item(data-url=route.url data-name=route.name)
+            .route-name= route.name
+            .route-right
+              .route-ping
+                span.ping-value --
+                span.ping-unit ms
+              .route-status
+                i.fas.fa-circle-notch.fa-spin

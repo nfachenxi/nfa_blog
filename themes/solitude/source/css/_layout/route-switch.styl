@@ -1,0 +1,171 @@
+// 线路切换组件样式
+.card-route-switch
+  .card-content
+    padding 0.8rem 1rem
+
+  .item-headline
+    padding-bottom 0.5rem
+
+  .route-list
+    margin-top 0.5rem
+    display flex
+    flex-direction column
+    gap 0.5rem
+    max-height 300px
+    overflow-y auto
+    overflow-x hidden
+    padding-right 4px
+    list-style none
+
+    // 自定义滚动条样式
+    &::-webkit-scrollbar
+      width 4px
+
+    &::-webkit-scrollbar-track
+      background var(--efu-secondbg)
+      border-radius 2px
+
+    &::-webkit-scrollbar-thumb
+      background var(--efu-main)
+      border-radius 2px
+
+      &:hover
+        background var(--efu-main)
+        opacity 0.8
+
+  .route-item
+    padding 0.5rem 0.7rem
+    border-radius 6px
+    background var(--efu-secondbg)
+    cursor pointer
+    transition all 0.2s ease
+    display flex
+    justify-content space-between
+    align-items center
+    border 1px solid transparent
+    position relative
+    min-height 40px
+    list-style none
+
+    &:hover
+      transform translateX(3px)
+      background var(--efu-main)
+      color var(--efu-white)
+      border-color var(--efu-main)
+
+    &.route-current
+      border-color var(--efu-main)
+      background var(--efu-main)
+      color var(--efu-white)
+      cursor default
+
+      &::after
+        content '●'
+        position absolute
+        left 0.5rem
+        top 50%
+        transform translateY(-50%)
+        font-size 0.5rem
+        animation pulse 2s infinite
+
+      &:hover
+        transform none
+
+    &.route-error
+      opacity 0.6
+
+      .route-status i
+        color var(--efu-red)
+
+    &.route-success
+      .route-status i
+        color var(--efu-green)
+
+    &.route-fast
+      .ping-value
+        color var(--efu-green)
+
+    &.route-normal
+      .ping-value
+        color var(--efu-yellow)
+
+    &.route-slow
+      .ping-value
+        color var(--efu-orange)
+
+  .route-name
+    font-weight 500
+    font-size 0.85rem
+    line-height 1.2
+    padding-left 1em
+    flex 1
+
+  .route-right
+    display flex
+    align-items center
+    gap 0.8rem
+    margin-left auto
+
+  .route-ping
+    font-size 0.75rem
+    opacity 0.7
+    white-space nowrap
+    text-align right
+    min-width 50px
+
+    .ping-value
+      font-weight 600
+      margin-right 1px
+
+    .ping-unit
+      font-size 0.7rem
+
+  .route-status
+    display flex
+    align-items center
+
+    i
+      font-size 0.8rem
+      transition all 0.3s
+
+      &.fa-spin
+        color var(--efu-fontcolor)
+        opacity 0.5
+
+      &.fa-circle
+        font-size 0.5rem
+
+      &.fa-circle-xmark
+        font-size 0.8rem
+
+// 脉冲动画
+@keyframes pulse
+  0%, 100%
+    opacity 1
+  50%
+    opacity 0.3
+
+// 响应式适配
++maxWidth768()
+  .card-route-switch
+    .route-list
+      max-height 250px
+
+    .route-item
+      padding 0.4rem 0.6rem
+      min-height 36px
+
+    .route-name
+      font-size 0.8rem
+
+    .route-ping
+      font-size 0.7rem
+
+// 线路检测加载状态
+.route-item
+  &.route-loading
+    pointer-events none
+    opacity 0.7
+
+    .route-status i
+      animation spin 1s linear infinite
